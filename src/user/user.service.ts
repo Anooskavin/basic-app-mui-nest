@@ -33,6 +33,10 @@ export class UserService {
     return this.userRepository.findOneBy({userid});
   }
 
+  findOneByUsername(username: string) {
+    return this.userRepository.findOneBy({username}) || undefined;
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
 
     const user: User = new User();
@@ -52,4 +56,6 @@ export class UserService {
 
     return { status: HttpStatus.OK, message: 'User Removed Successfully' };
   }
+
+
 }
