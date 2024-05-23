@@ -12,14 +12,14 @@ export class UserService {
   {}
 
 
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
     
     const user: User = new User();
     
     user.username = createUserDto.username;
     user.password = createUserDto.password;
 
-    this.userRepository.save(user)
+    await this.userRepository.save(user)
 
     return { status: HttpStatus.OK, message: 'User Created Successfully' };
 
