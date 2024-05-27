@@ -21,9 +21,12 @@ export class QueryFailedFilter implements ExceptionFilter {
       });
     }
 
+    console.log(exception.message)
+
     return response.json({
       statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
       timestamp: new Date().toISOString(),
+      errorMessage: exception.message
     });
   }
 }

@@ -19,4 +19,6 @@ export class CreateUserDto {
     }
 )
     password: string;
+    @IsNotEmpty()
+    role: 'admin' | 'users';
 }

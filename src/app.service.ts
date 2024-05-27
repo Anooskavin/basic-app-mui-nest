@@ -13,7 +13,6 @@ export class AppService {
   
   create(createUserDto : CreateUser) : string  {
     this.Users[createUserDto.username] = createUserDto.password;
-    console.log(this.Users)
     return "success";
   }
 
