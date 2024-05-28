@@ -6,12 +6,17 @@ import { AuthGuard } from './auth/auth.guard';
 
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule,{ cors: true });
+  const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new QueryFailedFilter());
   
-  
+  app.enableCors({
+    origin: 'http://localhost:3000', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS, UPDATE',
+    credentials: true,
+  });
+
 
   await app.listen(3001);
 }

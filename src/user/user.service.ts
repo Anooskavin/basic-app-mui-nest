@@ -40,15 +40,16 @@ export class UserService {
     return this.userRepository.findOneBy({username}) || undefined;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  async update(id: number, updateUserDto: UpdateUserDto) {
 
-    const user: User = new User();
+    
+    {const user: User = new User();
     
     user.username = updateUserDto.username;
     user.password = updateUserDto.password;
     user.userid = id;
 
-    this.userRepository.save(user)
+    await this.userRepository.save(user)}
 
     return { status: HttpStatus.OK, message: 'User Updated Successfully' };
   }

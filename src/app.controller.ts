@@ -1,10 +1,10 @@
-import { Body, Controller, Get, Param, Post, UseGuards, Request } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards, Request, UseFilters } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CreateUser } from './dto/create-user.dto';
 import { AuthService } from './auth/auth.service';
 import { Public } from './auth/public.decorator';
 import { AuthGuard } from '@nestjs/passport';
-
+import { QueryFailedFilter } from './query-failed.filter';
 
 @Controller()
 export class AppController {

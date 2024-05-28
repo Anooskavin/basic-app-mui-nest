@@ -27,9 +27,11 @@ export class AuthService {
         const fetchedUser = await this.userService.findOneByUsername(user.username);
         const payload = { username: fetchedUser.username, userid: fetchedUser.userid, role: fetchedUser.role };
         return {
+          "status": 200,
+          "message": "Login Success",
           access_token: this.jwtService.sign(payload),
         };
-        
+
       }
 
 
